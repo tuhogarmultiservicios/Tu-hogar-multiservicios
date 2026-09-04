@@ -1,0 +1,308 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Tú Hogar Multiservicios e Instalaciones. Pide presupuesto para reformas, pérgolas, toldos, suelos, puertas, ventanas, pintura, mamparas y montaje de muebles.">
+  <title>Tú Hogar | Pide tu presupuesto</title>
+  <style>
+    :root{
+      --green:#3b9621; --green-dark:#267516; --green-soft:#eef7e9;
+      --ink:#111; --muted:#5d625b; --line:#dce6d8; --white:#fff;
+      --shadow:0 16px 45px rgba(25,60,20,.10); --radius:20px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;font-family:Arial,Helvetica,sans-serif;color:var(--ink);background:#fafcf9}
+    a{color:inherit}
+    .wrap{width:min(1120px,92%);margin:auto}
+    .topbar{background:#111;color:#fff;font-size:14px}
+    .topbar .wrap{display:flex;justify-content:space-between;gap:18px;padding:9px 0}
+    header{background:#fff;position:sticky;top:0;z-index:20;border-bottom:1px solid #edf1eb}
+    nav{display:flex;align-items:center;justify-content:space-between;min-height:76px}
+    .brand{display:flex;align-items:center;gap:12px;text-decoration:none;font-weight:900}
+    .brand-mark{width:48px;height:48px;border-radius:13px;background:var(--green);display:grid;place-items:center;color:#fff;font-size:25px}
+    .brand small{display:block;color:#555;font-weight:700;letter-spacing:.3px;font-size:10px}
+    .brand strong{font-size:25px;line-height:1}
+    .navlinks{display:flex;gap:26px;align-items:center;font-weight:700}
+    .navlinks a{text-decoration:none}
+    .btn{display:inline-flex;align-items:center;justify-content:center;border:0;border-radius:999px;padding:14px 22px;font-weight:900;text-decoration:none;cursor:pointer;transition:.2s transform,.2s box-shadow}
+    .btn:hover{transform:translateY(-2px);box-shadow:0 10px 22px rgba(59,150,33,.18)}
+    .btn-green{background:var(--green);color:#fff}
+    .btn-dark{background:#111;color:#fff}
+    .hero{padding:54px 0 28px}
+    .hero-grid{display:grid;grid-template-columns:1.08fr .92fr;gap:42px;align-items:center}
+    .eyebrow{color:var(--green);font-weight:900;letter-spacing:1.5px;text-transform:uppercase;font-size:14px}
+    h1{font-size:clamp(42px,6vw,72px);line-height:.94;margin:13px 0 22px;letter-spacing:-2px}
+    h1 span{color:var(--green)}
+    .hero p{font-size:20px;line-height:1.55;color:var(--muted);max-width:650px}
+    .hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
+    .hero-card{background:#fff;border:1px solid var(--line);border-radius:28px;overflow:hidden;box-shadow:var(--shadow)}
+    .hero-card img{width:100%;display:block;max-height:590px;object-fit:cover;object-position:top}
+    section{padding:64px 0}
+    .section-head{display:flex;justify-content:space-between;gap:20px;align-items:end;margin-bottom:28px}
+    h2{font-size:38px;letter-spacing:-1px;margin:0 0 8px}
+    .section-head p{color:var(--muted);margin:0;max-width:620px;line-height:1.5}
+    .services{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+    .service{background:#fff;border:1px solid var(--line);border-radius:18px;padding:20px;display:flex;gap:15px;align-items:center;cursor:pointer;transition:.2s}
+    .service:hover{border-color:var(--green);transform:translateY(-2px)}
+    .service input{accent-color:var(--green);width:20px;height:20px;flex:0 0 auto}
+    .service-icon{width:48px;height:48px;border-radius:50%;background:var(--green-soft);display:grid;place-items:center;font-size:24px;flex:0 0 auto}
+    .service b{font-size:17px}
+    .quote{background:linear-gradient(135deg,#f0f8eb,#fff);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+    .quote-grid{display:grid;grid-template-columns:.7fr 1.3fr;gap:40px;align-items:start}
+    .quote-copy{position:sticky;top:110px}
+    .quote-copy h2{font-size:48px}
+    .ticks{list-style:none;padding:0;margin:24px 0;display:grid;gap:13px}
+    .ticks li:before{content:"✓";display:inline-grid;place-items:center;width:24px;height:24px;border-radius:50%;background:var(--green);color:#fff;font-weight:900;margin-right:9px}
+    form{background:#fff;border:1px solid var(--line);border-radius:24px;padding:28px;box-shadow:var(--shadow)}
+    .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+    .full{grid-column:1/-1}
+    label{display:grid;gap:7px;font-weight:800;font-size:14px}
+    input,select,textarea{width:100%;border:1px solid #cfd9cb;border-radius:12px;padding:13px 14px;font:inherit;background:#fff;outline:none}
+    input:focus,select:focus,textarea:focus{border-color:var(--green);box-shadow:0 0 0 3px rgba(59,150,33,.10)}
+    textarea{min-height:120px;resize:vertical}
+    .hint{font-size:12px;color:#70766e;font-weight:400}
+    .checkline{display:flex;gap:9px;align-items:flex-start;font-weight:600;color:#4f554d;font-size:13px}
+    .checkline input{width:auto;margin-top:2px}
+    .submit-row{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin-top:8px}
+    .success{display:none;margin-top:18px;background:var(--green-soft);border:1px solid #b9d9ad;border-radius:14px;padding:15px;line-height:1.5}
+    .why{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+    .why-card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:24px}
+    .why-card .num{font-size:30px;color:var(--green);font-weight:900}
+    .why-card h3{margin:12px 0 8px}
+    .why-card p{color:var(--muted);line-height:1.5;margin:0}
+    .areas{background:#111;color:#fff}
+    .areas .section-head p{color:#bfc5bb}
+    .area-pills{display:flex;flex-wrap:wrap;gap:10px}
+    .pill{border:1px solid #4b5748;padding:11px 17px;border-radius:999px}
+    footer{background:#fff;padding:28px 0;color:#646b61}
+    .foot{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+    .mobile-cta{display:none}
+    @media(max-width:850px){
+      .navlinks{display:none}
+      .hero-grid,.quote-grid{grid-template-columns:1fr}
+      .hero-card{order:-1}
+      .services,.why{grid-template-columns:1fr 1fr}
+      .quote-copy{position:static}
+    }
+    @media(max-width:560px){.logoImg{width:170px;height:62px}
+      .topbar .wrap{justify-content:center;text-align:center}
+      .topbar .wrap span:last-child{display:none}
+      .brand strong{font-size:21px}
+      .brand-mark{width:42px;height:42px}
+      .hero{padding-top:28px}
+      section{padding:46px 0}
+      .services,.why,.form-grid{grid-template-columns:1fr}
+      .full{grid-column:auto}
+      h2{font-size:32px}
+      .quote-copy h2{font-size:40px}
+      .mobile-cta{display:block;position:fixed;bottom:14px;left:14px;right:14px;z-index:30}
+      .mobile-cta .btn{width:100%;box-shadow:0 10px 30px rgba(0,0,0,.2)}
+    }
+  </style>
+</head>
+<body>
+  <div class="topbar"><div class="wrap"><span>📍 Trabajamos en toda la Comunidad Valenciana</span><span>Presupuesto sin compromiso</span></div></div>
+
+  <header>
+    <div class="wrap">
+      <nav>
+        <a class="brand" href="#">
+          <div class="brand-mark">⌂</div>
+          <div><strong>TÚ HOGAR</strong><small>MULTISERVICIOS E INSTALACIONES</small></div>
+        </a>
+        <div class="navlinks">
+          <a href="#servicios">Servicios</a>
+          <a href="#presupuesto">Presupuesto</a>
+          <a href="#zonas">Zonas</a>
+          <a class="btn btn-green" href="#presupuesto">Pedir presupuesto</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="wrap hero-grid">
+        <div>
+          <div class="eyebrow">Tú Hogar · Multiservicios</div>
+          <h1>Todo lo que tu hogar <span>necesita.</span></h1>
+          <p>Instalaciones, montajes y reformas realizadas por profesionales. Cuéntanos qué necesitas y te preparamos un presupuesto personalizado, sin compromiso.</p>
+          <div class="hero-actions">
+            <a class="btn btn-green" href="#presupuesto">Solicitar presupuesto →</a>
+            <a class="btn btn-dark" href="#servicios">Ver servicios</a>
+          </div>
+        </div>
+        <div class="hero-card"><img src="assets/flyer.png" alt="Servicios de Tú Hogar"></div>
+      </div>
+    </section>
+
+    <section id="servicios">
+      <div class="wrap">
+        <div class="section-head">
+          <div><div class="eyebrow">Nuestros servicios</div><h2>Elige qué necesitas</h2></div>
+          <p>Puedes seleccionar uno o varios servicios. Después te pediremos los datos necesarios para preparar tu solicitud.</p>
+        </div>
+        <div class="services">
+          <label class="service"><input type="checkbox" name="service" value="Pérgolas"><span class="service-icon">▱</span><b>Pérgolas</b></label>
+          <label class="service"><input type="checkbox" name="service" value="Montaje de toldo"><span class="service-icon">▰</span><b>Montaje de toldo</b></label>
+          <label class="service"><input type="checkbox" name="service" value="Montaje de suelo laminado"><span class="service-icon">▤</span><b>Suelo laminado</b></label>
+          <label class="service"><input type="checkbox" name="service" value="Puertas"><span class="service-icon">🚪</span><b>Puertas</b></label>
+          <label class="service"><input type="checkbox" name="service" value="Ventanas"><span class="service-icon">▦</span><b>Ventanas</b></label>
+          <label class="service"><input type="checkbox" name="service" value="Pintura"><span class="service-icon">▰</span><b>Pintura</b></label>
+          <label class="service"><input type="checkbox" name="service" value="Mamparas"><span class="service-icon">▥</span><b>Mamparas</b></label>
+          <label class="service"><input type="checkbox" name="service" value="Montaje de muebles"><span class="service-icon">🔧</span><b>Montaje de muebles</b></label>
+          <label class="service"><input type="checkbox" name="service" value="Reformas"><span class="service-icon">🛠</span><b>Reformas</b></label>
+        </div>
+      </div>
+    </section>
+
+    <section id="presupuesto" class="quote">
+      <div class="wrap quote-grid">
+        <div class="quote-copy">
+          <div class="eyebrow">Presupuesto personalizado</div>
+          <h2>Cuéntanos tu proyecto.</h2>
+          <p style="color:var(--muted);line-height:1.6">Rellena el formulario y tendremos una primera idea de lo que necesitas. Cuantos más detalles nos des, mejor podremos valorar tu trabajo.</p>
+          <ul class="ticks">
+            <li>Presupuesto sin compromiso</li>
+            <li>Atención personalizada</li>
+            <li>Soluciones a medida</li>
+            <li>Trabajo limpio y de calidad</li>
+          </ul>
+        </div>
+
+        <form id="quoteForm">
+          <div class="form-grid">
+            <label>Nombre y apellidos
+              <input name="name" required placeholder="Ej. María García">
+            </label>
+            <label>Teléfono
+              <input name="phone" required type="tel" placeholder="Ej. 600 123 456">
+            </label>
+            <label>Email
+              <input name="email" type="email" placeholder="tu@email.com">
+            </label>
+            <label>Provincia
+              <select name="province" required>
+                <option value="">Selecciona...</option>
+                <option>Valencia</option>
+                <option>Castellón</option>
+                <option>Alicante</option>
+                <option>Otra</option>
+              </select>
+            </label>
+            <label class="full">Servicio(s) seleccionado(s)
+              <input id="serviceSummary" name="services" readonly placeholder="Selecciona servicios arriba">
+              <span class="hint">Puedes seleccionar varios en la sección anterior.</span>
+            </label>
+            <label class="full">Cuéntanos qué necesitas
+              <textarea name="details" placeholder="Medidas aproximadas, ubicación, qué quieres instalar o reformar, cuándo te gustaría hacerlo..."></textarea>
+            </label>
+            <label class="full">Fotos (opcional)
+              <input name="photos" type="file" accept="image/*" multiple>
+              <span class="hint">Las fotos quedan en tu dispositivo; esta versión no las sube a ningún servidor.</span>
+            </label>
+            <label class="full checkline"><input type="checkbox" required> <span>Acepto que Tú Hogar utilice estos datos para responder a mi solicitud de presupuesto.</span></label>
+          </div>
+          <div class="submit-row">
+            <button class="btn btn-green" type="submit">Preparar mi solicitud →</button>
+            <button class="btn" type="button" id="copyBtn" style="background:#edf2eb">Copiar solicitud</button>
+          </div>
+          <div class="success" id="success"></div>
+        </form>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap">
+        <div class="section-head">
+          <div><div class="eyebrow">Por qué Tú Hogar</div><h2>Profesionales de confianza</h2></div>
+        </div>
+        <div class="why">
+          <div class="why-card"><div class="num">01</div><h3>Experiencia</h3><p>Soluciones prácticas para instalaciones, montajes y reformas del hogar.</p></div>
+          <div class="why-card"><div class="num">02</div><h3>A medida</h3><p>Valoramos cada proyecto según el espacio, materiales y necesidades.</p></div>
+          <div class="why-card"><div class="num">03</div><h3>Sin compromiso</h3><p>Solicita tu presupuesto y hablamos de la mejor opción para tu hogar.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="zonas" class="areas">
+      <div class="wrap">
+        <div class="section-head">
+          <div><div class="eyebrow">Dónde trabajamos</div><h2>Comunidad Valenciana</h2></div>
+          <p>Prestamos servicio en Valencia, Castellón y Alicante.</p>
+        </div>
+        <div class="area-pills"><span class="pill">Valencia</span><span class="pill">Castellón</span><span class="pill">Alicante</span></div>
+      </div>
+    </section>
+  </main>
+
+  <footer><div class="wrap foot"><div><strong>TÚ HOGAR</strong> · Multiservicios e Instalaciones</div><div>Tu hogar, nuestra prioridad.</div></div></footer>
+  <div class="mobile-cta"><a class="btn btn-green" href="#presupuesto">Pedir presupuesto</a></div>
+
+  <script>
+    // CONFIGURACIÓN:
+    // Para recibir solicitudes automáticamente por WhatsApp, pon aquí el número
+    // en formato internacional, sin +, espacios ni guiones. Ejemplo: 34600123456
+    const BUSINESS_WHATSAPP = "34633268222";
+
+    const form = document.getElementById("quoteForm");
+    const summary = document.getElementById("serviceSummary");
+    const success = document.getElementById("success");
+    const copyBtn = document.getElementById("copyBtn");
+
+    function selectedServices(){
+      return [...document.querySelectorAll('input[name="service"]:checked')].map(x=>x.value);
+    }
+    function updateServices(){
+      summary.value = selectedServices().join(", ");
+    }
+    document.querySelectorAll('input[name="service"]').forEach(x=>x.addEventListener("change", updateServices));
+
+    function requestText(){
+      const data = new FormData(form);
+      const services = selectedServices();
+      return `SOLICITUD DE PRESUPUESTO · TÚ HOGAR
+
+Nombre: ${data.get("name")}
+Teléfono: ${data.get("phone")}
+Email: ${data.get("email") || "No indicado"}
+Provincia: ${data.get("province")}
+Servicio(s): ${services.length ? services.join(", ") : "No indicado"}
+
+Detalles:
+${data.get("details") || "No indicados"}
+
+Enviado desde la web de Tú Hogar.`;
+    }
+
+    async function copyRequest(){
+      if(!form.reportValidity()) return;
+      await navigator.clipboard.writeText(requestText());
+      success.style.display = "block";
+      success.innerHTML = "✅ Solicitud copiada. Puedes pegarla en WhatsApp, email o donde quieras enviarla.";
+    }
+    copyBtn.addEventListener("click", copyRequest);
+
+    form.addEventListener("submit", async (e)=>{
+      e.preventDefault();
+      if(!selectedServices().length){
+        alert("Selecciona al menos un servicio.");
+        document.getElementById("servicios").scrollIntoView({behavior:"smooth"});
+        return;
+      }
+      const text = requestText();
+      if(BUSINESS_WHATSAPP){
+        window.open(`https://wa.me/${BUSINESS_WHATSAPP}?text=${encodeURIComponent(text)}`, "_blank");
+        success.style.display = "block";
+        success.innerHTML = "✅ Hemos preparado tu solicitud y abierto WhatsApp para que puedas enviarla.";
+      }else{
+        await navigator.clipboard.writeText(text);
+        success.style.display = "block";
+        success.innerHTML = "✅ Tu solicitud está preparada y se ha copiado al portapapeles. <strong>Para que llegue directamente a tu negocio, configura tu número de WhatsApp en el código de la web.</strong>";
+      }
+    });
+  </script>
+</body>
+</html>
