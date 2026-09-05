@@ -1,308 +1,253 @@
 <!doctype html>
 <html lang="es">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Tú Hogar Multiservicios e Instalaciones. Pide presupuesto para reformas, pérgolas, toldos, suelos, puertas, ventanas, pintura, mamparas y montaje de muebles.">
-  <title>Tú Hogar | Pide tu presupuesto</title>
-  <style>
-    :root{
-      --green:#3b9621; --green-dark:#267516; --green-soft:#eef7e9;
-      --ink:#111; --muted:#5d625b; --line:#dce6d8; --white:#fff;
-      --shadow:0 16px 45px rgba(25,60,20,.10); --radius:20px;
-    }
-    *{box-sizing:border-box}
-    html{scroll-behavior:smooth}
-    body{margin:0;font-family:Arial,Helvetica,sans-serif;color:var(--ink);background:#fafcf9}
-    a{color:inherit}
-    .wrap{width:min(1120px,92%);margin:auto}
-    .topbar{background:#111;color:#fff;font-size:14px}
-    .topbar .wrap{display:flex;justify-content:space-between;gap:18px;padding:9px 0}
-    header{background:#fff;position:sticky;top:0;z-index:20;border-bottom:1px solid #edf1eb}
-    nav{display:flex;align-items:center;justify-content:space-between;min-height:76px}
-    .brand{display:flex;align-items:center;gap:12px;text-decoration:none;font-weight:900}
-    .brand-mark{width:48px;height:48px;border-radius:13px;background:var(--green);display:grid;place-items:center;color:#fff;font-size:25px}
-    .brand small{display:block;color:#555;font-weight:700;letter-spacing:.3px;font-size:10px}
-    .brand strong{font-size:25px;line-height:1}
-    .navlinks{display:flex;gap:26px;align-items:center;font-weight:700}
-    .navlinks a{text-decoration:none}
-    .btn{display:inline-flex;align-items:center;justify-content:center;border:0;border-radius:999px;padding:14px 22px;font-weight:900;text-decoration:none;cursor:pointer;transition:.2s transform,.2s box-shadow}
-    .btn:hover{transform:translateY(-2px);box-shadow:0 10px 22px rgba(59,150,33,.18)}
-    .btn-green{background:var(--green);color:#fff}
-    .btn-dark{background:#111;color:#fff}
-    .hero{padding:54px 0 28px}
-    .hero-grid{display:grid;grid-template-columns:1.08fr .92fr;gap:42px;align-items:center}
-    .eyebrow{color:var(--green);font-weight:900;letter-spacing:1.5px;text-transform:uppercase;font-size:14px}
-    h1{font-size:clamp(42px,6vw,72px);line-height:.94;margin:13px 0 22px;letter-spacing:-2px}
-    h1 span{color:var(--green)}
-    .hero p{font-size:20px;line-height:1.55;color:var(--muted);max-width:650px}
-    .hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
-    .hero-card{background:#fff;border:1px solid var(--line);border-radius:28px;overflow:hidden;box-shadow:var(--shadow)}
-    .hero-card img{width:100%;display:block;max-height:590px;object-fit:cover;object-position:top}
-    section{padding:64px 0}
-    .section-head{display:flex;justify-content:space-between;gap:20px;align-items:end;margin-bottom:28px}
-    h2{font-size:38px;letter-spacing:-1px;margin:0 0 8px}
-    .section-head p{color:var(--muted);margin:0;max-width:620px;line-height:1.5}
-    .services{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
-    .service{background:#fff;border:1px solid var(--line);border-radius:18px;padding:20px;display:flex;gap:15px;align-items:center;cursor:pointer;transition:.2s}
-    .service:hover{border-color:var(--green);transform:translateY(-2px)}
-    .service input{accent-color:var(--green);width:20px;height:20px;flex:0 0 auto}
-    .service-icon{width:48px;height:48px;border-radius:50%;background:var(--green-soft);display:grid;place-items:center;font-size:24px;flex:0 0 auto}
-    .service b{font-size:17px}
-    .quote{background:linear-gradient(135deg,#f0f8eb,#fff);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
-    .quote-grid{display:grid;grid-template-columns:.7fr 1.3fr;gap:40px;align-items:start}
-    .quote-copy{position:sticky;top:110px}
-    .quote-copy h2{font-size:48px}
-    .ticks{list-style:none;padding:0;margin:24px 0;display:grid;gap:13px}
-    .ticks li:before{content:"✓";display:inline-grid;place-items:center;width:24px;height:24px;border-radius:50%;background:var(--green);color:#fff;font-weight:900;margin-right:9px}
-    form{background:#fff;border:1px solid var(--line);border-radius:24px;padding:28px;box-shadow:var(--shadow)}
-    .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
-    .full{grid-column:1/-1}
-    label{display:grid;gap:7px;font-weight:800;font-size:14px}
-    input,select,textarea{width:100%;border:1px solid #cfd9cb;border-radius:12px;padding:13px 14px;font:inherit;background:#fff;outline:none}
-    input:focus,select:focus,textarea:focus{border-color:var(--green);box-shadow:0 0 0 3px rgba(59,150,33,.10)}
-    textarea{min-height:120px;resize:vertical}
-    .hint{font-size:12px;color:#70766e;font-weight:400}
-    .checkline{display:flex;gap:9px;align-items:flex-start;font-weight:600;color:#4f554d;font-size:13px}
-    .checkline input{width:auto;margin-top:2px}
-    .submit-row{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin-top:8px}
-    .success{display:none;margin-top:18px;background:var(--green-soft);border:1px solid #b9d9ad;border-radius:14px;padding:15px;line-height:1.5}
-    .why{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-    .why-card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:24px}
-    .why-card .num{font-size:30px;color:var(--green);font-weight:900}
-    .why-card h3{margin:12px 0 8px}
-    .why-card p{color:var(--muted);line-height:1.5;margin:0}
-    .areas{background:#111;color:#fff}
-    .areas .section-head p{color:#bfc5bb}
-    .area-pills{display:flex;flex-wrap:wrap;gap:10px}
-    .pill{border:1px solid #4b5748;padding:11px 17px;border-radius:999px}
-    footer{background:#fff;padding:28px 0;color:#646b61}
-    .foot{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
-    .mobile-cta{display:none}
-    @media(max-width:850px){
-      .navlinks{display:none}
-      .hero-grid,.quote-grid{grid-template-columns:1fr}
-      .hero-card{order:-1}
-      .services,.why{grid-template-columns:1fr 1fr}
-      .quote-copy{position:static}
-    }
-    @media(max-width:560px){.logoImg{width:170px;height:62px}
-      .topbar .wrap{justify-content:center;text-align:center}
-      .topbar .wrap span:last-child{display:none}
-      .brand strong{font-size:21px}
-      .brand-mark{width:42px;height:42px}
-      .hero{padding-top:28px}
-      section{padding:46px 0}
-      .services,.why,.form-grid{grid-template-columns:1fr}
-      .full{grid-column:auto}
-      h2{font-size:32px}
-      .quote-copy h2{font-size:40px}
-      .mobile-cta{display:block;position:fixed;bottom:14px;left:14px;right:14px;z-index:30}
-      .mobile-cta .btn{width:100%;box-shadow:0 10px 30px rgba(0,0,0,.2)}
-    }
-  </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Tú Hogar Multiservicios e Instalaciones. Reformas, toldos, pérgolas, suelos, cocinas, casetas y más en toda la Comunidad Valenciana.">
+<title>Tú Hogar | Multiservicios e Instalaciones</title>
+<style>
+:root{--green:#087936;--green2:#13a14c;--green-soft:#eef8f1;--dark:#101413;--muted:#5f6964;--line:#dfe8e2}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:Arial,Helvetica,sans-serif;color:var(--dark);background:#fff}
+a{color:inherit;text-decoration:none} .wrap{max-width:1180px;margin:auto;padding:0 24px}
+.topbar{background:#fff;border-bottom:1px solid #edf1ee} .topinner{min-height:92px;display:flex;align-items:center;gap:28px}
+.logo{width:190px;display:block} nav{display:flex;gap:26px;margin-left:auto;font-size:14px;font-weight:700} nav a:hover{color:var(--green)}
+.contact-mini{display:flex;gap:18px;align-items:center;margin-left:20px;font-size:13px;font-weight:700} .contact-mini span{white-space:nowrap}
+.whatsapp-dot,.mail-dot,.insta-dot{width:28px;height:28px;border-radius:50%;display:inline-grid;place-items:center;color:white;margin-right:6px;font-size:15px}
+.whatsapp-dot,.mail-dot{background:var(--green)} .insta-dot{background:linear-gradient(135deg,#743ad5,#d62976,#fa7e1e)}
+.hero{background:linear-gradient(90deg,#f7faf8 0%,#fff 46%,#eef5f0 100%);overflow:hidden}
+.hero-grid{display:grid;grid-template-columns:45% 55%;min-height:470px}
+.hero-copy{padding:58px 20px 52px 0;align-self:center;z-index:2}
+.hero h1{font-size:clamp(48px,6vw,72px);line-height:.98;margin:0 0 14px;letter-spacing:-2px}
+.hero h1 span{color:var(--green)} .lead{font-size:20px;line-height:1.45;margin:0 0 24px}
+.trust{display:flex;gap:28px;flex-wrap:wrap;margin:24px 0} .trust-item{display:flex;align-items:center;gap:10px;font-size:14px;font-weight:700}
+.trust-ico{width:42px;height:42px;border:2px solid var(--green);border-radius:50%;display:grid;place-items:center;color:var(--green);font-size:20px}
+.cta{display:inline-flex;align-items:center;gap:12px;background:linear-gradient(90deg,var(--green2),var(--green));color:#fff;font-weight:800;padding:16px 24px;border-radius:12px;box-shadow:0 12px 30px rgba(0,110,52,.18)}
+.hero-visual{position:relative;min-height:470px;background:url('hero-patio.jpg') center/cover no-repeat}
+.hero-visual:after{content:"Trabajamos en toda la Comunidad Valenciana";position:absolute;right:22px;bottom:22px;max-width:250px;background:rgba(255,255,255,.9);padding:15px 18px;border-radius:14px;font-weight:800;color:var(--green);box-shadow:0 8px 25px rgba(0,0,0,.08)}
+.section{padding:56px 0} .section h2{text-align:center;font-size:42px;margin:0 0 6px} .section h2 span{color:var(--green)} .sub{text-align:center;color:var(--muted);margin-bottom:32px}
+.services{display:grid;grid-template-columns:repeat(6,1fr);gap:16px}
+.service-card{position:relative;border:1px solid var(--line);border-radius:14px;background:#fff;min-height:155px;padding:18px 10px 14px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:10px;box-shadow:0 6px 20px rgba(13,54,31,.05);cursor:pointer;transition:.2s}
+.service-card:hover{transform:translateY(-3px);box-shadow:0 12px 28px rgba(13,54,31,.09)} .service-card input{position:absolute;opacity:0;pointer-events:none}
+.service-card:has(input:checked){border:2px solid var(--green);background:#f6fcf8}
+.icon{width:66px;height:66px;display:grid;place-items:center} .icon svg{width:62px;height:62px;fill:none;stroke:var(--green);stroke-width:3.5;stroke-linecap:round;stroke-linejoin:round}
+.service-name{font-weight:800;font-size:15px;line-height:1.15}
+.quote{display:grid;grid-template-columns:40% 60%;background:#f8faf9;border-top:1px solid #edf1ee}
+.quote-left{background:linear-gradient(140deg,#087936,#075b2b);color:#fff;padding:42px max(24px,calc((100vw - 1180px)/2 + 24px)) 42px 24px}
+.quote-left h3{font-size:38px;margin:0 0 8px} .quote-left p{font-size:18px;color:#dff6e7} .ticks{display:grid;gap:16px;margin-top:28px} .tick{display:flex;gap:10px;align-items:center} .check{width:22px;height:22px;background:#fff;color:var(--green);border-radius:50%;display:grid;place-items:center;font-weight:900}
+.formwrap{padding:34px 24px} form{max-width:760px;margin:0 auto} .formgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.field{display:grid;gap:7px;font-size:13px;font-weight:800} .field.full{grid-column:1/-1} input,textarea{width:100%;border:1px solid #ccd8cf;border-radius:10px;padding:13px 14px;font:inherit;background:#fff} textarea{min-height:100px;resize:vertical}
+.selected{grid-column:1/-1;background:#eef8f1;border:1px solid #d7e8db;border-radius:10px;padding:12px 14px;font-size:13px;color:#31513f}
+.send{grid-column:1/-1;border:0;border-radius:12px;background:linear-gradient(90deg,var(--green2),var(--green));color:white;font-size:18px;font-weight:900;padding:16px;cursor:pointer}
+footer{padding:24px;text-align:center;background:#0e1712;color:#dce7df;font-size:13px}
+@media(max-width:1050px){nav{display:none}.contact-mini{margin-left:auto;flex-wrap:wrap;justify-content:flex-end}.services{grid-template-columns:repeat(4,1fr)}}
+@media(max-width:780px){.topinner{min-height:80px}.logo{width:155px}.contact-mini span:nth-child(2),.contact-mini span:nth-child(3){display:none}.hero-grid{grid-template-columns:1fr}.hero-copy{padding:42px 0 32px}.hero-visual{min-height:310px}.services{grid-template-columns:repeat(2,1fr)}.quote{grid-template-columns:1fr}.quote-left{padding:34px 24px}.formgrid{grid-template-columns:1fr}.field.full,.selected,.send{grid-column:1}}
+</style>
 </head>
 <body>
-  <div class="topbar"><div class="wrap"><span>📍 Trabajamos en toda la Comunidad Valenciana</span><span>Presupuesto sin compromiso</span></div></div>
-
-  <header>
-    <div class="wrap">
-      <nav>
-        <a class="brand" href="#">
-          <img class="logoImg" src="logo-tu-hogar.jpg" alt="Tú Hogar Multiservicios e Instalaciones">
-        </a>
-        <div class="navlinks">
-          <a href="#servicios">Servicios</a>
-          <a href="#presupuesto">Presupuesto</a>
-          <a href="#zonas">Zonas</a>
-          <a class="btn btn-green" href="#presupuesto">Pedir presupuesto</a>
-        </div>
-      </nav>
+<header class="topbar">
+  <div class="wrap topinner">
+    <img src="logo-tu-hogar.jpg" class="logo" alt="Tú Hogar Multiservicios e Instalaciones">
+    <nav><a href="#inicio">Inicio</a><a href="#servicios">Servicios</a><a href="#presupuesto">Contacto</a></nav>
+    <div class="contact-mini">
+      <span><i class="whatsapp-dot">☎</i>633 268 222</span>
+      <span><i class="insta-dot">◎</i>@tuhogarinstalaciones</span>
+      <span><i class="mail-dot">✉</i>tuhogarmultiservicios@outlook.com</span>
     </div>
-  </header>
+  </div>
+</header>
 
-  <main>
-    <section class="hero">
-      <div class="wrap hero-grid">
-        <div>
-          <div class="eyebrow">Tú Hogar · Multiservicios</div>
-          <h1>Todo lo que tu hogar <span>necesita.</span></h1>
-          <p>Instalaciones, montajes y reformas realizadas por profesionales. Cuéntanos qué necesitas y te preparamos un presupuesto personalizado, sin compromiso.</p>
-          <div class="hero-actions">
-            <a class="btn btn-green" href="#presupuesto">Solicitar presupuesto →</a>
-            <a class="btn btn-dark" href="#servicios">Ver servicios</a>
-          </div>
-        </div>
-        <div class="hero-card"><img src="logo-tu-hogar.jpg" alt="Servicios de Tú Hogar"></div>
+<section class="hero" id="inicio">
+  <div class="wrap hero-grid">
+    <div class="hero-copy">
+      <h1>Tu hogar en<br><span>buenas manos</span></h1>
+      <p class="lead">Multiservicios e instalaciones para viviendas, chalets y comunidades.</p>
+      <div class="trust">
+        <div class="trust-item"><span class="trust-ico">✓</span>Calidad<br>y confianza</div>
+        <div class="trust-item"><span class="trust-ico">◷</span>Rapidez y<br>eficacia</div>
+        <div class="trust-item"><span class="trust-ico">⌂</span>Toda la<br>Comunidad Valenciana</div>
       </div>
-    </section>
+      <a class="cta" href="https://wa.me/34633268222" target="_blank">☎ PIDE TU PRESUPUESTO POR WHATSAPP →</a>
+    </div>
+    <div class="hero-visual"></div>
+  </div>
+</section>
 
-    <section id="servicios">
-      <div class="wrap">
-        <div class="section-head">
-          <div><div class="eyebrow">Nuestros servicios</div><h2>Elige qué necesitas</h2></div>
-          <p>Puedes seleccionar uno o varios servicios. Después te pediremos los datos necesarios para preparar tu solicitud.</p>
-        </div>
-        <div class="services">
-          <label class="service"><input type="checkbox" name="service" value="Pérgolas"><span class="service-icon">▱</span><b>Pérgolas</b></label>
-          <label class="service"><input type="checkbox" name="service" value="Montaje de toldo"><span class="service-icon">▰</span><b>Montaje de toldo</b></label>
-          <label class="service"><input type="checkbox" name="service" value="Montaje de suelo laminado"><span class="service-icon">▤</span><b>Suelo laminado</b></label>
-          <label class="service"><input type="checkbox" name="service" value="Puertas"><span class="service-icon">🚪</span><b>Puertas</b></label>
-          <label class="service"><input type="checkbox" name="service" value="Ventanas"><span class="service-icon">▦</span><b>Ventanas</b></label>
-          <label class="service"><input type="checkbox" name="service" value="Pintura"><span class="service-icon">▰</span><b>Pintura</b></label>
-          <label class="service"><input type="checkbox" name="service" value="Mamparas"><span class="service-icon">▥</span><b>Mamparas</b></label>
-          <label class="service"><input type="checkbox" name="service" value="Montaje de muebles"><span class="service-icon">🔧</span><b>Montaje de muebles</b></label>
-          <label class="service"><input type="checkbox" name="service" value="Reformas"><span class="service-icon">🛠</span><b>Reformas</b></label>
-          <label class="service"><input type="checkbox" name="servicie" value="Otros"><span class="icono-servicio">🔧</span><b>Otros</b></label>
-        </div>
+<section class="section" id="servicios">
+  <div class="wrap">
+    <h2>Nuestros <span>servicios</span></h2>
+    <p class="sub">Soluciones completas para tu hogar. Puedes seleccionar uno o varios servicios.</p>
+    <div class="services">
+<label class="service-card">
+  <input type="checkbox" name="service" value="Reformas">
+  <span class="icon"><svg viewBox="0 0 64 64"><path d="M10 30 32 12l22 18"/><path d="M17 27v25h30V27"/><path d="m22 42 8-8 12 12"/><path d="m37 28 9-9"/></svg></span>
+  <span class="service-name">Reformas</span>
+</label>
+
+<label class="service-card">
+  <input type="checkbox" name="service" value="Pintura">
+  <span class="icon"><svg viewBox="0 0 64 64"><path d="M12 18h30v12H12z"/><path d="M42 24h8v10H31v8"/><path d="M31 42v12"/></svg></span>
+  <span class="service-name">Pintura</span>
+</label>
+
+<label class="service-card">
+  <input type="checkbox" name="service" value="Toldos">
+  <span class="icon"><svg viewBox="0 0 64 64"><path d="M10 18h44l-5 12H15z"/><path d="M15 30v22M49 30v22"/><path d="M15 30c4 6 8 6 12 0 4 6 8 6 12 0 4 6 8 6 12 0"/></svg></span>
+  <span class="service-name">Toldos</span>
+</label>
+
+<label class="service-card">
+  <input type="checkbox" name="service" value="Pérgolas">
+  <span class="icon"><svg viewBox="0 0 64 64"><path d="M10 25 32 12l22 13"/><path d="M15 24h34M18 24v30M46 24v30M12 54h40"/><path d="M22 24 32 15l10 9"/></svg></span>
+  <span class="service-name">Pérgolas</span>
+</label>
+
+<label class="service-card">
+  <input type="checkbox" name="service" value="Suelos laminados">
+  <span class="icon"><svg viewBox="0 0 64 64"><path d="M15 12h8L13 52H5zM28 12h8L26 52h-8zM41 12h8L39 52h-8zM54 12h5L52 52h-8z"/></svg></span>
+  <span class="service-name">Suelos laminados</span>
+</label>
+
+<label class="service-card">
+  <input type="checkbox" name="service" value="Composite / revestimiento de pared">
+  <span class="icon"><svg viewBox="0 0 64 64"><path d="M14 18h34v9H14zM10 28h34v9H10zM16 38h34v9H16z"/></svg></span>
+  <span class="service-name">Composite / revestimiento de pared</span>
+</label>
+
+<label class="service-card">
+  <input type="checkbox" name="service" value="Montaje de muebles">
+  <span class="icon"><svg viewBox="0 0 64 64"><path d="M10 16h20v36H10zM34 16h20v36H34z"/><path d="M20 16v36M44 16v36"/><circle cx="26" cy="34" r="1.5"/><circle cx="38" cy="34" r="1.5"/></svg></span>
+  <span class="service-name">Montaje de muebles</span>
+</label>
+
+<label class="service-card">
+  <input type="checkbox" name="service" value="Cocinas">
+  <span class="icon"><svg viewBox="0 0 64 64"><path d="M8 14h16v16H8zM40 14h16v16H40zM8 34h48v18H8z"/><path d="M24 14h16M26 26h12M20 43h24"/></svg></span>
+  <span class="service-name">Cocinas</span>
+</label>
+
+<label class="service-card">
+  <input type="checkbox" name="service" value="Campanas extractoras">
+  <span class="icon"><svg viewBox="0 0 64 64"><path d="M25 10h14v14l10 12v8H15v-8l10-12z"/><path d="M19 50h26"/></svg></span>
+  <span class="service-name">Campanas extractoras</span>
+</label>
+
+<label class="service-card">
+  <input type="checkbox" name="service" value="Vitrocerámicas">
+  <span class="icon"><svg viewBox="0 0 64 64"><rect x="9" y="10" width="46" height="44" rx="3"/><circle cx="23" cy="24" r="8"/><circle cx="42" cy="24" r="8"/><circle cx="23" cy="43" r="8"/><circle cx="42" cy="43" r="8"/></svg></span>
+  <span class="service-name">Vitrocerámicas</span>
+</label>
+
+<label class="service-card">
+  <input type="checkbox" name="service" value="Ventiladores de techo">
+  <span class="icon"><svg viewBox="0 0 64 64"><circle cx="32" cy="32" r="4"/><path d="M32 28V12c8 0 12 4 12 8 0 5-5 7-12 8zM36 33l14 8c-4 7-9 9-13 7-5-2-4-8-1-15zM28 33l-14 8c4 7 9 9 13 7 5-2 4-8 1-15z"/></svg></span>
+  <span class="service-name">Ventiladores de techo</span>
+</label>
+
+<label class="service-card">
+  <input type="checkbox" name="service" value="Cenadores">
+  <span class="icon"><svg viewBox="0 0 64 64"><path d="M8 26 32 12l24 14"/><path d="M13 26h38M16 26v28M48 26v28M10 54h44"/></svg></span>
+  <span class="service-name">Cenadores</span>
+</label>
+
+<label class="service-card">
+  <input type="checkbox" name="service" value="Puertas">
+  <span class="icon"><svg viewBox="0 0 64 64"><path d="M16 10h30v44H16z"/><path d="M22 14h18v40H22z"/><circle cx="36" cy="35" r="1.5"/></svg></span>
+  <span class="service-name">Puertas</span>
+</label>
+
+<label class="service-card">
+  <input type="checkbox" name="service" value="Ventanas">
+  <span class="icon"><svg viewBox="0 0 64 64"><rect x="10" y="12" width="44" height="40"/><path d="M32 12v40M10 32h44"/></svg></span>
+  <span class="service-name">Ventanas</span>
+</label>
+
+<label class="service-card">
+  <input type="checkbox" name="service" value="Casetas metálicas">
+  <span class="icon"><svg viewBox="0 0 64 64"><path d="M10 26 32 12l22 14v28H10z"/><path d="M19 26v28M45 26v28M28 38h12v16"/><path d="M14 31h8M42 31h8"/></svg></span>
+  <span class="service-name">Casetas metálicas</span>
+</label>
+
+<label class="service-card">
+  <input type="checkbox" name="service" value="Casetas de madera">
+  <span class="icon"><svg viewBox="0 0 64 64"><path d="M10 26 32 12l22 14v28H10z"/><path d="M18 30h28M18 36h28M18 42h28M18 48h28"/><path d="M28 38h12v16"/></svg></span>
+  <span class="service-name">Casetas de madera</span>
+</label>
+
+<label class="service-card">
+  <input type="checkbox" name="service" value="Casetas de resina">
+  <span class="icon"><svg viewBox="0 0 64 64"><path d="M10 26 32 12l22 14v28H10z"/><path d="M16 31h12M36 31h12M16 38h12M36 38h12"/><path d="M28 39h12v15"/></svg></span>
+  <span class="service-name">Casetas de resina</span>
+</label>
+
+<label class="service-card">
+  <input type="checkbox" name="service" value="Otros">
+  <span class="icon"><svg viewBox="0 0 64 64"><path d="M12 20h40v32H12z"/><path d="M22 20v-6h20v6"/><path d="m24 36 6 6 12-14"/></svg></span>
+  <span class="service-name">Otros</span>
+</label></div>
+  </div>
+</section>
+
+<section class="quote" id="presupuesto">
+  <div class="quote-left">
+    <h3>Cuéntanos tu proyecto</h3>
+    <p>Te asesoramos sin compromiso</p>
+    <div class="ticks">
+      <div class="tick"><span class="check">✓</span>Respuesta rápida por WhatsApp</div>
+      <div class="tick"><span class="check">✓</span>Presupuesto sin compromiso</div>
+      <div class="tick"><span class="check">✓</span>Atención personalizada</div>
+      <div class="tick"><span class="check">✓</span>Trabajamos en toda la Comunidad Valenciana</div>
+    </div>
+  </div>
+  <div class="formwrap">
+    <form id="quoteForm">
+      <div class="formgrid">
+        <label class="field">Nombre *<input id="name" required placeholder="Tu nombre"></label>
+        <label class="field">Teléfono *<input id="phone" type="tel" required placeholder="Tu teléfono"></label>
+        <label class="field">Pueblo / Ciudad *<input id="city" required placeholder="Tu pueblo o ciudad"></label>
+        <label class="field">Código Postal *<input id="postal" required inputmode="numeric" placeholder="Código postal"></label>
+        <label class="field">Email<input id="email" type="email" placeholder="tu@email.com"></label>
+        <div class="selected"><b>Servicio(s) seleccionado(s):</b> <span id="selectedText">Ninguno seleccionado</span></div>
+        <label class="field full">Descripción del trabajo *<textarea id="details" required placeholder="Cuéntanos qué necesitas..."></textarea></label>
+        <button class="send" type="submit">☎ ENVIAR POR WHATSAPP →</button>
       </div>
-    </section>
+    </form>
+  </div>
+</section>
 
-    <section id="presupuesto" class="quote">
-      <div class="wrap quote-grid">
-        <div class="quote-copy">
-          <div class="eyebrow">Presupuesto personalizado</div>
-          <h2>Cuéntanos tu proyecto.</h2>
-          <p style="color:var(--muted);line-height:1.6">Rellena el formulario y tendremos una primera idea de lo que necesitas. Cuantos más detalles nos des, mejor podremos valorar tu trabajo.</p>
-          <ul class="ticks">
-            <li>Presupuesto sin compromiso</li>
-            <li>Atención personalizada</li>
-            <li>Soluciones a medida</li>
-            <li>Trabajo limpio y de calidad</li>
-          </ul>
-        </div>
+<footer>
+  TÚ HOGAR · Multiservicios e Instalaciones · Comunidad Valenciana ·
+  <a href="mailto:tuhogarmultiservicios@outlook.com">tuhogarmultiservicios@outlook.com</a> ·
+  <a href="https://instagram.com/tuhogarinstalaciones" target="_blank">@tuhogarinstalaciones</a>
+</footer>
 
-        <form id="quoteForm">
-          <div class="form-grid">
-            <label>Nombre y apellidos
-              <input name="name" required placeholder="Ej. María García">
-            </label>
-            <label>Teléfono
-              <input name="phone" required type="tel" placeholder="Ej. 600 123 456">
-            </label>
-            <label>Email
-              <input name="email" type="email" placeholder="tu@email.com">
-            </label>
-            <label>Provincia
-              <select name="province" required>
-                <option value="">Selecciona...</option>
-                <option>Valencia</option>
-                <option>Castellón</option>
-                <option>Alicante</option>
-                <option>Otra</option>
-              </select>
-            </label>
-            <label class="full">Servicio(s) seleccionado(s)
-              <input id="serviceSummary" name="services" readonly placeholder="Selecciona servicios arriba">
-              <span class="hint">Puedes seleccionar varios en la sección anterior.</span>
-            </label>
-            <label class="full">Cuéntanos qué necesitas
-              <textarea name="details" placeholder="Medidas aproximadas, ubicación, qué quieres instalar o reformar, cuándo te gustaría hacerlo..."></textarea>
-            </label>
-            <label class="full">Fotos (opcional)
-              <input name="photos" type="file" accept="image/*" multiple>
-              <span class="hint">Las fotos quedan en tu dispositivo; esta versión no las sube a ningún servidor.</span>
-            </label>
-            <label class="full checkline"><input type="checkbox" required> <span>Acepto que Tú Hogar utilice estos datos para responder a mi solicitud de presupuesto.</span></label>
-          </div>
-          <div class="submit-row">
-            <button class="btn btn-green" type="submit">Preparar mi solicitud →</button>
-            <button class="btn" type="button" id="copyBtn" style="background:#edf2eb">Copiar solicitud</button>
-          </div>
-          <div class="success" id="success"></div>
-        </form>
-      </div>
-    </section>
+<script>
+const boxes=[...document.querySelectorAll('input[name="service"]')];
+const selectedText=document.getElementById('selectedText');
+function updateSelected(){
+  const values=boxes.filter(b=>b.checked).map(b=>b.value);
+  selectedText.textContent=values.length?values.join(', '):'Ninguno seleccionado';
+}
+boxes.forEach(b=>b.addEventListener('change',updateSelected));
 
-    <section>
-      <div class="wrap">
-        <div class="section-head">
-          <div><div class="eyebrow">Por qué Tú Hogar</div><h2>Profesionales de confianza</h2></div>
-        </div>
-        <div class="why">
-          <div class="why-card"><div class="num">01</div><h3>Experiencia</h3><p>Soluciones prácticas para instalaciones, montajes y reformas del hogar.</p></div>
-          <div class="why-card"><div class="num">02</div><h3>A medida</h3><p>Valoramos cada proyecto según el espacio, materiales y necesidades.</p></div>
-          <div class="why-card"><div class="num">03</div><h3>Sin compromiso</h3><p>Solicita tu presupuesto y hablamos de la mejor opción para tu hogar.</p></div>
-        </div>
-      </div>
-    </section>
-
-    <section id="zonas" class="areas">
-      <div class="wrap">
-        <div class="section-head">
-          <div><div class="eyebrow">Dónde trabajamos</div><h2>Comunidad Valenciana</h2></div>
-          <p>Prestamos servicio en Valencia, Castellón y Alicante.</p>
-        </div>
-        <div class="area-pills"><span class="pill">Valencia</span><span class="pill">Castellón</span><span class="pill">Alicante</span></div>
-      </div>
-    </section>
-  </main>
-
-  <footer><div class="wrap foot"><div><strong>TÚ HOGAR</strong> · Multiservicios e Instalaciones</div><div>Tu hogar, nuestra prioridad.</div></div></footer>
-  <div class="mobile-cta"><a class="btn btn-green" href="#presupuesto">Pedir presupuesto</a></div>
-
-  <script>
-    // CONFIGURACIÓN:
-    // Para recibir solicitudes automáticamente por WhatsApp, pon aquí el número
-    // en formato internacional, sin +, espacios ni guiones. Ejemplo: 34600123456
-    const BUSINESS_WHATSAPP = "34633268222";
-
-    const form = document.getElementById("quoteForm");
-    const summary = document.getElementById("serviceSummary");
-    const success = document.getElementById("success");
-    const copyBtn = document.getElementById("copyBtn");
-
-    function selectedServices(){
-      return [...document.querySelectorAll('input[name="service"]:checked')].map(x=>x.value);
-    }
-    function updateServices(){
-      summary.value = selectedServices().join(", ");
-    }
-    document.querySelectorAll('input[name="service"]').forEach(x=>x.addEventListener("change", updateServices));
-
-    function requestText(){
-      const data = new FormData(form);
-      const services = selectedServices();
-      return `SOLICITUD DE PRESUPUESTO · TÚ HOGAR
-
-Nombre: ${data.get("name")}
-Teléfono: ${data.get("phone")}
-Email: ${data.get("email") || "No indicado"}
-Provincia: ${data.get("province")}
-Servicio(s): ${services.length ? services.join(", ") : "No indicado"}
-
-Detalles:
-${data.get("details") || "No indicados"}
-
-Enviado desde la web de Tú Hogar.`;
-    }
-
-    async function copyRequest(){
-      if(!form.reportValidity()) return;
-      await navigator.clipboard.writeText(requestText());
-      success.style.display = "block";
-      success.innerHTML = "✅ Solicitud copiada. Puedes pegarla en WhatsApp, email o donde quieras enviarla.";
-    }
-    copyBtn.addEventListener("click", copyRequest);
-
-    form.addEventListener("submit", async (e)=>{
-      e.preventDefault();
-      if(!selectedServices().length){
-        alert("Selecciona al menos un servicio.");
-        document.getElementById("servicios").scrollIntoView({behavior:"smooth"});
-        return;
-      }
-      const text = requestText();
-      if(BUSINESS_WHATSAPP){
-        window.open(`https://wa.me/${BUSINESS_WHATSAPP}?text=${encodeURIComponent(text)}`, "_blank");
-        success.style.display = "block";
-        success.innerHTML = "✅ Hemos preparado tu solicitud y abierto WhatsApp para que puedas enviarla.";
-      }else{
-        await navigator.clipboard.writeText(text);
-        success.style.display = "block";
-        success.innerHTML = "✅ Tu solicitud está preparada y se ha copiado al portapapeles. <strong>Para que llegue directamente a tu negocio, configura tu número de WhatsApp en el código de la web.</strong>";
-      }
-    });
-  </script>
+document.getElementById('quoteForm').addEventListener('submit', function(e){
+  e.preventDefault();
+  const services=boxes.filter(b=>b.checked).map(b=>b.value);
+  if(!services.length){ alert('Selecciona al menos un servicio.'); return; }
+  const msg = [
+    'Hola, quiero solicitar un presupuesto.',
+    '',
+    'Nombre: '+document.getElementById('name').value,
+    'Teléfono: '+document.getElementById('phone').value,
+    'Pueblo/Ciudad: '+document.getElementById('city').value,
+    'Código postal: '+document.getElementById('postal').value,
+    'Email: '+(document.getElementById('email').value || 'No indicado'),
+    'Servicios: '+services.join(', '),
+    '',
+    'Trabajo que necesito:',
+    document.getElementById('details').value
+  ].join('\n');
+  window.open('https://wa.me/34633268222?text='+encodeURIComponent(msg),'_blank');
+});
+</script>
 </body>
 </html>
