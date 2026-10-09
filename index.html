@@ -22,7 +22,7 @@ a{color:inherit;text-decoration:none} .wrap{max-width:1180px;margin:auto;padding
 .trust{display:flex;gap:28px;flex-wrap:wrap;margin:24px 0} .trust-item{display:flex;align-items:center;gap:10px;font-size:14px;font-weight:700}
 .trust-ico{width:42px;height:42px;border:2px solid var(--green);border-radius:50%;display:grid;place-items:center;color:var(--green);font-size:20px}
 .cta{display:inline-flex;align-items:center;gap:12px;background:linear-gradient(90deg,var(--green2),var(--green));color:#fff;font-weight:800;padding:16px 24px;border-radius:12px;box-shadow:0 12px 30px rgba(0,110,52,.18)}
-.hero-visual{position:relative;min-height:470px;background:url('hero-patio.jpg') center/cover no-repeat}
+.hero-visual{position:relative;min-height:470px;background:url('trabajo-01.jpg') center/cover no-repeat}
 .hero-visual:after{content:"Trabajamos en toda la Comunidad Valenciana";position:absolute;right:22px;bottom:22px;max-width:250px;background:rgba(255,255,255,.9);padding:15px 18px;border-radius:14px;font-weight:800;color:var(--green);box-shadow:0 8px 25px rgba(0,0,0,.08)}
 .section{padding:56px 0} .section h2{text-align:center;font-size:42px;margin:0 0 6px} .section h2 span{color:var(--green)} .sub{text-align:center;color:var(--muted);margin-bottom:32px}
 .services{display:grid;grid-template-columns:repeat(6,1fr);gap:16px}
@@ -41,13 +41,16 @@ a{color:inherit;text-decoration:none} .wrap{max-width:1180px;margin:auto;padding
 footer{padding:24px;text-align:center;background:#0e1712;color:#dce7df;font-size:13px}
 @media(max-width:1050px){nav{display:none}.contact-mini{margin-left:auto;flex-wrap:wrap;justify-content:flex-end}.services{grid-template-columns:repeat(4,1fr)}}
 @media(max-width:780px){.topinner{min-height:80px}.logo{width:155px}.contact-mini span:nth-child(2),.contact-mini span:nth-child(3){display:none}.hero-grid{grid-template-columns:1fr}.hero-copy{padding:42px 0 32px}.hero-visual{min-height:310px}.services{grid-template-columns:repeat(2,1fr)}.quote{grid-template-columns:1fr}.quote-left{padding:34px 24px}.formgrid{grid-template-columns:1fr}.field.full,.selected,.send{grid-column:1}}
+
+.gallery-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}.gallery-card{margin:0;border:1px solid var(--line);border-radius:15px;overflow:hidden;background:#fff;box-shadow:0 5px 18px rgba(0,0,0,.05)}.gallery-card img{display:block;width:100%;height:235px;object-fit:cover}.gallery-card figcaption{padding:14px 16px;font-weight:700}.gallery-card img{cursor:zoom-in}@media(max-width:780px){.gallery-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.gallery-card img{height:165px}}@media(max-width:480px){.gallery-grid{grid-template-columns:1fr}.gallery-card img{height:235px}}
+.brand-wordmark{display:block;color:var(--green);font-size:27px;font-weight:900;line-height:1;text-decoration:none;white-space:nowrap}.brand-wordmark small{display:block;color:#394e40;font-size:10px;letter-spacing:.4px;margin-top:6px}
 </style>
 </head>
 <body>
 <header class="topbar">
   <div class="wrap topinner">
-    <img src="logo-tu-hogar.jpg" class="logo" alt="Tú Hogar Multiservicios e Instalaciones">
-    <nav><a href="#inicio">Inicio</a><a href="#servicios">Servicios</a><a href="#presupuesto">Contacto</a></nav>
+    <a href="#inicio" class="brand-wordmark" aria-label="Tú Hogar Multiservicios">TÚ HOGAR <small>Multiservicios e Instalaciones</small></a>
+    <nav><a href="#inicio">Inicio</a><a href="#servicios">Servicios</a><a href="#trabajos">Nuestros trabajos</a><a href="#presupuesto">Contacto</a></nav>
     <div class="contact-mini">
       <span><i class="whatsapp-dot">☎</i>633 268 222</span>
       <span><i class="insta-dot">◎</i>@tuhogarinstalaciones</span>
@@ -187,6 +190,18 @@ footer{padding:24px;text-align:center;background:#0e1712;color:#dce7df;font-size
   </div>
 </section>
 
+<section class="section" id="trabajos"><div class="wrap"><h2>Nuestros <span>trabajos</span></h2><p class="sub">Algunos de nuestros proyectos de instalaciones y reformas.</p><div class="gallery-grid"><figure class="gallery-card"><a href="trabajo-01.jpg" target="_blank" aria-label="Ver foto: Pérgola bioclimática en terraza"><img src="trabajo-01.jpg" alt="Pérgola bioclimática en terraza" loading="lazy"></a><figcaption>Pérgola bioclimática en terraza</figcaption></figure>
+<figure class="gallery-card"><a href="trabajo-02.jpg" target="_blank" aria-label="Ver foto: Pérgola de lamas orientables"><img src="trabajo-02.jpg" alt="Pérgola de lamas orientables" loading="lazy"></a><figcaption>Pérgola de lamas orientables</figcaption></figure>
+<figure class="gallery-card"><a href="trabajo-03.jpg" target="_blank" aria-label="Ver foto: Pérgola junto a piscina"><img src="trabajo-03.jpg" alt="Pérgola junto a piscina" loading="lazy"></a><figcaption>Pérgola junto a piscina</figcaption></figure>
+<figure class="gallery-card"><a href="trabajo-04.jpg" target="_blank" aria-label="Ver foto: Instalación de pérgola"><img src="trabajo-04.jpg" alt="Instalación de pérgola" loading="lazy"></a><figcaption>Instalación de pérgola</figcaption></figure>
+<figure class="gallery-card"><a href="trabajo-05.jpg" target="_blank" aria-label="Ver foto: Instalación de toldo"><img src="trabajo-05.jpg" alt="Instalación de toldo" loading="lazy"></a><figcaption>Instalación de toldo</figcaption></figure>
+<figure class="gallery-card"><a href="trabajo-06.jpg" target="_blank" aria-label="Ver foto: Suelo de acabado madera"><img src="trabajo-06.jpg" alt="Suelo de acabado madera" loading="lazy"></a><figcaption>Suelo de acabado madera</figcaption></figure>
+<figure class="gallery-card"><a href="trabajo-07.jpg" target="_blank" aria-label="Ver foto: Montaje de caseta de madera"><img src="trabajo-07.jpg" alt="Montaje de caseta de madera" loading="lazy"></a><figcaption>Montaje de caseta de madera</figcaption></figure>
+<figure class="gallery-card"><a href="trabajo-08.jpg" target="_blank" aria-label="Ver foto: Caseta exterior"><img src="trabajo-08.jpg" alt="Caseta exterior" loading="lazy"></a><figcaption>Caseta exterior</figcaption></figure>
+<figure class="gallery-card"><a href="trabajo-09.jpg" target="_blank" aria-label="Ver foto: Instalación de cocina"><img src="trabajo-09.jpg" alt="Instalación de cocina" loading="lazy"></a><figcaption>Instalación de cocina</figcaption></figure>
+<figure class="gallery-card"><a href="trabajo-10.jpg" target="_blank" aria-label="Ver foto: Reforma de baño"><img src="trabajo-10.jpg" alt="Reforma de baño" loading="lazy"></a><figcaption>Reforma de baño</figcaption></figure>
+<figure class="gallery-card"><a href="trabajo-11.jpg" target="_blank" aria-label="Ver foto: Trabajos de piscina"><img src="trabajo-11.jpg" alt="Trabajos de piscina" loading="lazy"></a><figcaption>Trabajos de piscina</figcaption></figure>
+<figure class="gallery-card"><a href="trabajo-12.jpg" target="_blank" aria-label="Ver foto: Cubierta para patio"><img src="trabajo-12.jpg" alt="Cubierta para patio" loading="lazy"></a><figcaption>Cubierta para patio</figcaption></figure></div></div></section>
 <section class="quote" id="presupuesto">
   <div class="quote-left">
     <h3>Cuéntanos tu proyecto</h3>
