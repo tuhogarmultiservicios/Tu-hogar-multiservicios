@@ -71,6 +71,23 @@ footer{padding:24px;text-align:center;background:#0e1712;color:#dce7df;font-size
 .gallery-grid[hidden]{display:none}
 @media(max-width:780px){.category-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.category-tile img{height:130px}}
 @media(max-width:420px){.category-tile img{height:110px}.category-tile .category-caption{font-size:13px;padding:10px}}
+/* Botón visible para seguirnos en Instagram */
+.instagram-follow{display:flex;justify-content:center;margin:28px auto 0}
+.instagram-follow a{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:14px 22px;border-radius:12px;background:linear-gradient(110deg,#833ab4,#c13584,#e1306c,#f77737);color:#fff;font-weight:800;text-align:center;box-shadow:0 8px 22px rgba(131,58,180,.18)}
+.instagram-follow a:hover,.instagram-follow a:focus-visible{filter:brightness(.94)}
+/* Botón de correo visible y legible en móviles */
+.email-contact-button{display:flex;flex-direction:column;align-items:flex-start;gap:5px;width:fit-content;max-width:100%;margin-top:15px;padding:13px 17px;border:1px solid #bcd9c5;border-radius:12px;background:#fff;color:#075b2b;font-size:14px;line-height:1.4;box-shadow:0 4px 14px rgba(13,54,31,.05)}
+.email-contact-button strong{font-size:14px;overflow-wrap:anywhere;word-break:break-word}
+.email-contact-button:hover,.email-contact-button:focus-visible{background:#eef8f1;outline-offset:3px}
+@media(max-width:480px){.email-contact-button{width:100%;font-size:13px}.email-contact-button strong{font-size:13px}}
+
+/* Colaboraciones con profesionales */
+.professionals{background:#eef8f1;border-top:1px solid #dfe8e2}
+.professionals .wrap{max-width:920px;text-align:center}
+.professionals h2{font-size:clamp(28px,4vw,40px)}
+.professionals p{color:#394e40;line-height:1.65;font-size:17px;max-width:750px;margin:15px auto}
+.professionals .collab-btn{display:inline-flex;justify-content:center;align-items:center;gap:9px;background:var(--green);color:white;padding:16px 24px;border-radius:12px;font-weight:800;margin-top:15px;text-align:center}
+.professionals .collab-btn:hover,.professionals .collab-btn:focus-visible{background:#075b2b}
 </style>
 </head>
 <body>
@@ -80,8 +97,7 @@ footer{padding:24px;text-align:center;background:#0e1712;color:#dce7df;font-size
     <nav><a href="#inicio">Inicio</a><a href="#servicios">Servicios</a><a href="#trabajos">Nuestros trabajos</a><a href="#presupuesto">Contacto</a></nav>
     <div class="contact-mini">
       <span><a href="https://wa.me/34633268222" target="_blank" rel="noopener"><i class="whatsapp-dot">☎</i>633 268 222</a></span>
-      <span><a href="https://wa.me/34622297788" target="_blank" rel="noopener"><i class="whatsapp-dot">☎</i>622 297 788</a></span><span><i class="insta-dot">◎</i>@tuhogarinstalaciones</span>
-      <span><i class="mail-dot">✉</i>tuhogarmultiservicios@outlook.com</span>
+      <span><a href="https://wa.me/34622297788" target="_blank" rel="noopener"><i class="whatsapp-dot">☎</i>622 297 788</a></span><span><a href="https://www.instagram.com/tuhogarinstalaciones/" target="_blank" rel="noopener noreferrer" aria-label="Síguenos en Instagram @tuhogarinstalaciones"><i class="insta-dot">◎</i>@tuhogarinstalaciones</a></span>
     </div>
   </div>
 </header>
@@ -97,6 +113,7 @@ footer{padding:24px;text-align:center;background:#0e1712;color:#dce7df;font-size
         <div class="trust-item"><span class="trust-ico">⌂</span>Toda la<br>Comunidad Valenciana</div>
       </div>
       <a class="cta" href="https://wa.me/34633268222" target="_blank">☎ PIDE TU PRESUPUESTO POR WHATSAPP →</a>
+      <a class="email-contact-button" href="mailto:tuhogarmultiservicios@outlook.com?subject=Consulta%20desde%20Tu%20Hogar" aria-label="Contactarnos por correo electrónico en tuhogarmultiservicios@outlook.com"><span>✉ También puedes contactarnos por correo</span><strong>tuhogarmultiservicios@outlook.com</strong></a>
     </div>
     <div class="hero-visual"></div>
   </div>
@@ -104,8 +121,8 @@ footer{padding:24px;text-align:center;background:#0e1712;color:#dce7df;font-size
 
 <section class="section" id="servicios">
   <div class="wrap">
-    <h2>Nuestros <span>servicios</span></h2>
-    <p class="sub">Soluciones completas para tu hogar. Puedes seleccionar uno o varios servicios.</p>
+    <h2>Elige tu <span>servicio</span></h2>
+    <p class="sub">Selecciona uno o varios servicios que necesites y deja tus datos de contacto en el formulario. Te responderemos lo antes posible para preparar tu presupuesto sin compromiso.</p>
     <div class="service-layout"><div class="services">
 <label class="service-card">
   <input type="checkbox" name="service" value="Reformas">
@@ -233,8 +250,17 @@ footer{padding:24px;text-align:center;background:#0e1712;color:#dce7df;font-size
 </div>
 </section>
 
-<section class="section" id="trabajos"><div class="wrap"><h2>Nuestros <span>trabajos</span></h2><p class="sub">Algunos de nuestros proyectos de instalaciones y reformas.</p><div class="category-grid" id="galleryFilters" aria-label="Categorías de trabajos"></div><div class="gallery-grid" id="galleryGrid" hidden></div><p class="gallery-note" id="galleryStatus" aria-live="polite"></p></div></section>
+<section class="section" id="trabajos"><div class="wrap"><h2>Nuestros <span>trabajos</span></h2><p class="sub">Algunos de nuestros proyectos de instalaciones y reformas.</p><div class="category-grid" id="galleryFilters" aria-label="Categorías de trabajos"></div><div class="gallery-grid" id="galleryGrid" hidden></div><p class="gallery-note" id="galleryStatus" aria-live="polite"></p><div class="instagram-follow"><a href="https://www.instagram.com/tuhogarinstalaciones/" target="_blank" rel="noopener noreferrer" aria-label="Síguenos en Instagram @tuhogarinstalaciones">◎ Síguenos en Instagram · @tuhogarinstalaciones ↗</a></div></div></section>
 
+
+<section class="section professionals" id="colaboraciones">
+  <div class="wrap">
+    <h2>¿Eres <span>profesional del sector?</span></h2>
+    <p>En Tu Hogar Multiservicios estamos abiertos a colaborar con promotores, arquitectos, interioristas, constructoras y otros profesionales.</p>
+    <p>Si necesitas apoyo en instalaciones, reformas o trabajos especializados, estaremos encantados de estudiar una colaboración para tus proyectos.</p>
+    <a class="collab-btn" href="https://wa.me/34633268222?text=Hola%2C%20soy%20profesional%20del%20sector%20y%20me%20gustar%C3%ADa%20hablar%20sobre%20una%20posible%20colaboraci%C3%B3n." target="_blank" rel="noopener noreferrer">☎ Proponer una colaboración por WhatsApp →</a>
+  </div>
+</section>
 
 <footer>
   TÚ HOGAR · Multiservicios e Instalaciones · Comunidad Valenciana ·
