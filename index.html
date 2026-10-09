@@ -45,6 +45,32 @@ footer{padding:24px;text-align:center;background:#0e1712;color:#dce7df;font-size
 .gallery-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}.gallery-card{margin:0;border:1px solid var(--line);border-radius:15px;overflow:hidden;background:#fff;box-shadow:0 5px 18px rgba(0,0,0,.05)}.gallery-card img{display:block;width:100%;height:235px;object-fit:cover}.gallery-card figcaption{padding:14px 16px;font-weight:700}.gallery-card img{cursor:zoom-in}@media(max-width:780px){.gallery-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.gallery-card img{height:165px}}@media(max-width:480px){.gallery-grid{grid-template-columns:1fr}.gallery-card img{height:235px}}
 .brand-wordmark{display:block;color:var(--green);font-size:27px;font-weight:900;line-height:1;text-decoration:none;white-space:nowrap}.brand-wordmark small{display:block;color:#394e40;font-size:10px;letter-spacing:.4px;margin-top:6px}
 .gallery-filters{display:flex;justify-content:center;flex-wrap:wrap;gap:9px;margin:0 0 24px}.gallery-filter{border:1px solid #bcd9c5;border-radius:30px;background:#fff;color:#075b2b;padding:10px 15px;font-weight:700;cursor:pointer}.gallery-filter[aria-pressed="true"]{background:#087936;color:#fff}.gallery-note{text-align:center;color:#5f6964;font-size:13px;margin:15px auto}
+
+/* Distribución compacta de servicios y presupuesto */
+.service-layout{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(330px,0.85fr);gap:24px;align-items:start}
+.service-layout .services{grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.service-layout .service-card{min-height:106px;padding:10px 6px;gap:5px;border-radius:12px}
+.service-layout .icon{width:39px;height:39px}
+.service-layout .icon svg{width:37px;height:37px}
+.service-layout .service-name{font-size:12px;line-height:1.2;overflow-wrap:anywhere}
+.service-layout .formwrap{position:sticky;top:12px;padding:22px;border:1px solid var(--line);border-radius:16px;background:#f8faf9}
+.formwrap h3{font-size:25px;margin:0 0 6px;color:var(--green)}
+.form-intro{font-size:13px;color:var(--muted);line-height:1.4;margin:0 0 18px}
+.service-layout .formgrid{grid-template-columns:repeat(2,minmax(0,1fr));gap:11px}
+.service-layout .field.full,.service-layout .selected,.service-layout .send{grid-column:1/-1}
+.service-layout input,.service-layout textarea{padding:11px;font-size:14px}
+.service-layout .send{font-size:14px;padding:13px}
+.service-layout .send.secondary{background:#e4ece7;color:#486251;cursor:not-allowed;opacity:.85}
+@media(max-width:900px){.service-layout{grid-template-columns:1fr}.service-layout .formwrap{position:static}.service-layout .services{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-width:520px){.section{padding:34px 0}.section h2{font-size:32px}.service-layout{gap:20px}.service-layout .services{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.service-layout .service-card{min-height:86px;padding:8px 5px}.service-layout .icon{width:32px;height:32px}.service-layout .icon svg{width:30px;height:30px}.service-layout .service-name{font-size:12px}.service-layout .formwrap{padding:17px}.service-layout .formgrid{grid-template-columns:1fr}}
+.category-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-bottom:22px}
+.category-tile{padding:0;border:1px solid var(--line);border-radius:15px;overflow:hidden;background:white;text-align:left;cursor:pointer;box-shadow:0 5px 18px rgba(0,0,0,.05);font:inherit}
+.category-tile img{display:block;width:100%;height:170px;object-fit:cover}
+.category-tile .category-caption{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:14px;font-weight:800;color:var(--green)}
+.category-tile[aria-expanded="true"]{outline:3px solid var(--green)}
+.gallery-grid[hidden]{display:none}
+@media(max-width:780px){.category-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.category-tile img{height:130px}}
+@media(max-width:420px){.category-tile img{height:110px}.category-tile .category-caption{font-size:13px;padding:10px}}
 </style>
 </head>
 <body>
@@ -53,8 +79,8 @@ footer{padding:24px;text-align:center;background:#0e1712;color:#dce7df;font-size
     <a href="#inicio" class="brand-wordmark" aria-label="Tú Hogar Multiservicios">TÚ HOGAR <small>Multiservicios e Instalaciones</small></a>
     <nav><a href="#inicio">Inicio</a><a href="#servicios">Servicios</a><a href="#trabajos">Nuestros trabajos</a><a href="#presupuesto">Contacto</a></nav>
     <div class="contact-mini">
-      <span><i class="whatsapp-dot">☎</i>633 268 222</span>
-      <span><i class="insta-dot">◎</i>@tuhogarinstalaciones</span>
+      <span><a href="https://wa.me/34633268222" target="_blank" rel="noopener"><i class="whatsapp-dot">☎</i>633 268 222</a></span>
+      <span><a href="https://wa.me/34622297788" target="_blank" rel="noopener"><i class="whatsapp-dot">☎</i>622 297 788</a></span><span><i class="insta-dot">◎</i>@tuhogarinstalaciones</span>
       <span><i class="mail-dot">✉</i>tuhogarmultiservicios@outlook.com</span>
     </div>
   </div>
@@ -80,7 +106,7 @@ footer{padding:24px;text-align:center;background:#0e1712;color:#dce7df;font-size
   <div class="wrap">
     <h2>Nuestros <span>servicios</span></h2>
     <p class="sub">Soluciones completas para tu hogar. Puedes seleccionar uno o varios servicios.</p>
-    <div class="services">
+    <div class="service-layout"><div class="services">
 <label class="service-card">
   <input type="checkbox" name="service" value="Reformas">
   <span class="icon"><svg viewBox="0 0 64 64"><path d="M10 30 32 12l22 18"/><path d="M17 27v25h30V27"/><path d="m22 42 8-8 12 12"/><path d="m37 28 9-9"/></svg></span>
@@ -188,22 +214,7 @@ footer{padding:24px;text-align:center;background:#0e1712;color:#dce7df;font-size
   <span class="icon"><svg viewBox="0 0 64 64"><path d="M12 20h40v32H12z"/><path d="M22 20v-6h20v6"/><path d="m24 36 6 6 12-14"/></svg></span>
   <span class="service-name">Otros</span>
 </label></div>
-  </div>
-</section>
-
-<section class="section" id="trabajos"><div class="wrap"><h2>Nuestros <span>trabajos</span></h2><p class="sub">Algunos de nuestros proyectos de instalaciones y reformas.</p><div class="gallery-filters" id="galleryFilters" aria-label="Filtrar trabajos"></div><div class="gallery-grid" id="galleryGrid"></div><p class="gallery-note" id="galleryStatus" aria-live="polite"></p></div></section>
-<section class="quote" id="presupuesto">
-  <div class="quote-left">
-    <h3>Cuéntanos tu proyecto</h3>
-    <p>Te asesoramos sin compromiso</p>
-    <div class="ticks">
-      <div class="tick"><span class="check">✓</span>Respuesta rápida por WhatsApp</div>
-      <div class="tick"><span class="check">✓</span>Presupuesto sin compromiso</div>
-      <div class="tick"><span class="check">✓</span>Atención personalizada</div>
-      <div class="tick"><span class="check">✓</span>Trabajamos en toda la Comunidad Valenciana</div>
-    </div>
-  </div>
-  <div class="formwrap">
+  <div class="formwrap" id="presupuesto"><h3>Cuéntanos tu proyecto</h3><p class="form-intro">Te asesoramos sin compromiso. Selecciona los servicios y envíanos tus datos.</p>
     <form id="quoteForm">
       <div class="formgrid">
         <label class="field">Nombre *<input id="name" required placeholder="Tu nombre"></label>
@@ -213,11 +224,17 @@ footer{padding:24px;text-align:center;background:#0e1712;color:#dce7df;font-size
         <label class="field">Email<input id="email" type="email" placeholder="tu@email.com"></label>
         <div class="selected"><b>Servicio(s) seleccionado(s):</b> <span id="selectedText">Ninguno seleccionado</span></div>
         <label class="field full">Descripción del trabajo *<textarea id="details" required placeholder="Cuéntanos qué necesitas..."></textarea></label>
-        <button class="send" type="submit">☎ ENVIAR POR WHATSAPP →</button>
+        <button class="send" type="submit" data-whatsapp="34633268222">☎ ENVIAR AL WHATSAPP PRINCIPAL →</button>
+        <button class="send secondary" type="submit" data-whatsapp="34622297788">☎ ENVIAR AL WHATSAPP SECUNDARIO →</button>
       </div>
     </form>
   </div>
+  </div>
+</div>
 </section>
+
+<section class="section" id="trabajos"><div class="wrap"><h2>Nuestros <span>trabajos</span></h2><p class="sub">Algunos de nuestros proyectos de instalaciones y reformas.</p><div class="category-grid" id="galleryFilters" aria-label="Categorías de trabajos"></div><div class="gallery-grid" id="galleryGrid" hidden></div><p class="gallery-note" id="galleryStatus" aria-live="polite"></p></div></section>
+
 
 <footer>
   TÚ HOGAR · Multiservicios e Instalaciones · Comunidad Valenciana ·
@@ -251,7 +268,8 @@ document.getElementById('quoteForm').addEventListener('submit', function(e){
     'Trabajo que necesito:',
     document.getElementById('details').value
   ].join('\n');
-  window.open('https://wa.me/34633268222?text='+encodeURIComponent(msg),'_blank');
+  const destination = e.submitter?.dataset.whatsapp || '34633268222';
+  window.open('https://wa.me/'+destination+'?text='+encodeURIComponent(msg),'_blank','noopener');
 });
 </script>
 
@@ -289,14 +307,27 @@ document.getElementById('quoteForm').addEventListener('submit', function(e){
  const categories=['Todos','Pérgolas y toldos','Reformas','Suelos y pavimentos','Jardines y exteriores','Carpintería y casetas','Otros'];
  const rules=[[/^(pergola|p[eé]rgola|toldo|cubierta)-/i,'Pérgolas y toldos'],[/^(reforma|bano|baño|cocina|albanileria)-/i,'Reformas'],[/^(suelo|pavimento|alicatado)-/i,'Suelos y pavimentos'],[/^(jardin|jardín|piscina|exterior)-/i,'Jardines y exteriores'],[/^(caseta|carpinteria|madera)-/i,'Carpintería y casetas']];
  const grid=document.getElementById('galleryGrid'),filters=document.getElementById('galleryFilters'),status=document.getElementById('galleryStatus');
- let active='Todos'; let photos=[];
- const readable=name=>name.replace(/\.[^.]+$/,'').replace(/[-_]+/g,' ').replace(/\w/g,c=>c.toUpperCase());
+ let active=null; let photos=[];
+ const readable=name=>name.replace(/\.[^.]+$/,'').replace(/[-_]+/g,' ').replace(/\b\w/g,c=>c.toUpperCase());
  function makePhoto(name){const known=originals[name];return {name,title:known?known[0]:readable(name),category:known?known[1]:(rules.find(([re])=>re.test(name))||[null,'Otros'])[1]};}
  function render(){
-  filters.replaceChildren();categories.forEach(cat=>{const b=document.createElement('button');b.type='button';b.className='gallery-filter';b.textContent=cat;b.setAttribute('aria-pressed',String(cat===active));b.onclick=()=>{active=cat;render()};filters.append(b)});
-  grid.replaceChildren();const shown=photos.filter(p=>active==='Todos'||p.category===active);
-  shown.forEach(p=>{const fig=document.createElement('figure');fig.className='gallery-card';const a=document.createElement('a');a.href=encodeURI(p.name);a.target='_blank';a.rel='noopener';a.setAttribute('aria-label','Ver foto: '+p.title);const img=document.createElement('img');img.src=encodeURI(p.name);img.alt=p.title;img.loading='lazy';const cap=document.createElement('figcaption');cap.textContent=p.title;a.append(img);fig.append(a,cap);grid.append(fig)});
-  status.textContent=shown.length?shown.length+' fotografía'+(shown.length===1?'':'s')+' en esta sección.':'Todavía no hay fotografías en esta categoría.';
+   filters.replaceChildren();
+   categories.filter(cat=>cat!=='Todos').forEach(cat=>{
+     const list=photos.filter(p=>p.category===cat);
+     const button=document.createElement('button');button.type='button';button.className='category-tile';
+     button.setAttribute('aria-expanded',String(active===cat));button.setAttribute('aria-controls','galleryGrid');
+     if(list.length){const img=document.createElement('img');img.src=encodeURI(list[0].name);img.alt='Portada de '+cat;img.loading='lazy';button.append(img);}
+     else {const empty=document.createElement('div');empty.style.cssText='height:130px;display:grid;place-items:center;background:#eef8f1;color:#087936';empty.textContent='Sin fotografías todavía';button.append(empty);}
+     const caption=document.createElement('span');caption.className='category-caption';caption.textContent=cat;
+     const arrow=document.createElement('span');arrow.textContent=active===cat?'−':'＋';arrow.setAttribute('aria-hidden','true');caption.append(arrow);button.append(caption);
+     button.onclick=()=>{active=active===cat?null:cat;render();if(active)grid.scrollIntoView({behavior:'smooth',block:'nearest'});};
+     filters.append(button);
+   });
+   grid.replaceChildren();grid.hidden=!active;
+   if(!active){status.textContent='Pulsa una categoría para ver sus fotografías.';return;}
+   const shown=photos.filter(p=>p.category===active);
+   shown.forEach(p=>{const fig=document.createElement('figure');fig.className='gallery-card';const a=document.createElement('a');a.href=encodeURI(p.name);a.target='_blank';a.rel='noopener';a.setAttribute('aria-label','Ver foto: '+p.title);const img=document.createElement('img');img.src=encodeURI(p.name);img.alt=p.title;img.loading='lazy';const cap=document.createElement('figcaption');cap.textContent=p.title;a.append(img);fig.append(a,cap);grid.append(fig)});
+   status.textContent=shown.length?shown.length+' fotografía'+(shown.length===1?'':'s')+' en '+active+'.':'Todavía no hay fotografías en '+active+'.';
  }
  photos=Object.keys(originals).map(makePhoto);render();
  fetch('https://api.github.com/repos/'+repo+'/contents/?ref=main',{headers:{'Accept':'application/vnd.github+json'}})
