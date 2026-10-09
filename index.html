@@ -22,7 +22,7 @@ a{color:inherit;text-decoration:none} .wrap{max-width:1180px;margin:auto;padding
 .trust{display:flex;gap:28px;flex-wrap:wrap;margin:24px 0} .trust-item{display:flex;align-items:center;gap:10px;font-size:14px;font-weight:700}
 .trust-ico{width:42px;height:42px;border:2px solid var(--green);border-radius:50%;display:grid;place-items:center;color:var(--green);font-size:20px}
 .cta{display:inline-flex;align-items:center;gap:12px;background:linear-gradient(90deg,var(--green2),var(--green));color:#fff;font-weight:800;padding:16px 24px;border-radius:12px;box-shadow:0 12px 30px rgba(0,110,52,.18)}
-.hero-visual{position:relative;min-height:470px;background:url('hero-patio.jpg') center/cover no-repeat}
+.hero-visual{position:relative;min-height:470px;background:url('trabajo-01.jpg') center/cover no-repeat}
 .hero-visual:after{content:"Trabajamos en toda la Comunidad Valenciana";position:absolute;right:22px;bottom:22px;max-width:250px;background:rgba(255,255,255,.9);padding:15px 18px;border-radius:14px;font-weight:800;color:var(--green);box-shadow:0 8px 25px rgba(0,0,0,.08)}
 .section{padding:56px 0} .section h2{text-align:center;font-size:42px;margin:0 0 6px} .section h2 span{color:var(--green)} .sub{text-align:center;color:var(--muted);margin-bottom:32px}
 .services{display:grid;grid-template-columns:repeat(6,1fr);gap:16px}
@@ -41,13 +41,17 @@ a{color:inherit;text-decoration:none} .wrap{max-width:1180px;margin:auto;padding
 footer{padding:24px;text-align:center;background:#0e1712;color:#dce7df;font-size:13px}
 @media(max-width:1050px){nav{display:none}.contact-mini{margin-left:auto;flex-wrap:wrap;justify-content:flex-end}.services{grid-template-columns:repeat(4,1fr)}}
 @media(max-width:780px){.topinner{min-height:80px}.logo{width:155px}.contact-mini span:nth-child(2),.contact-mini span:nth-child(3){display:none}.hero-grid{grid-template-columns:1fr}.hero-copy{padding:42px 0 32px}.hero-visual{min-height:310px}.services{grid-template-columns:repeat(2,1fr)}.quote{grid-template-columns:1fr}.quote-left{padding:34px 24px}.formgrid{grid-template-columns:1fr}.field.full,.selected,.send{grid-column:1}}
+
+.gallery-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}.gallery-card{margin:0;border:1px solid var(--line);border-radius:15px;overflow:hidden;background:#fff;box-shadow:0 5px 18px rgba(0,0,0,.05)}.gallery-card img{display:block;width:100%;height:235px;object-fit:cover}.gallery-card figcaption{padding:14px 16px;font-weight:700}.gallery-card img{cursor:zoom-in}@media(max-width:780px){.gallery-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.gallery-card img{height:165px}}@media(max-width:480px){.gallery-grid{grid-template-columns:1fr}.gallery-card img{height:235px}}
+.brand-wordmark{display:block;color:var(--green);font-size:27px;font-weight:900;line-height:1;text-decoration:none;white-space:nowrap}.brand-wordmark small{display:block;color:#394e40;font-size:10px;letter-spacing:.4px;margin-top:6px}
+.gallery-filters{display:flex;justify-content:center;flex-wrap:wrap;gap:9px;margin:0 0 24px}.gallery-filter{border:1px solid #bcd9c5;border-radius:30px;background:#fff;color:#075b2b;padding:10px 15px;font-weight:700;cursor:pointer}.gallery-filter[aria-pressed="true"]{background:#087936;color:#fff}.gallery-note{text-align:center;color:#5f6964;font-size:13px;margin:15px auto}
 </style>
 </head>
 <body>
 <header class="topbar">
   <div class="wrap topinner">
-    <img src="logo-tu-hogar.jpg" class="logo" alt="Tú Hogar Multiservicios e Instalaciones">
-    <nav><a href="#inicio">Inicio</a><a href="#servicios">Servicios</a><a href="#presupuesto">Contacto</a></nav>
+    <a href="#inicio" class="brand-wordmark" aria-label="Tú Hogar Multiservicios">TÚ HOGAR <small>Multiservicios e Instalaciones</small></a>
+    <nav><a href="#inicio">Inicio</a><a href="#servicios">Servicios</a><a href="#trabajos">Nuestros trabajos</a><a href="#presupuesto">Contacto</a></nav>
     <div class="contact-mini">
       <span><i class="whatsapp-dot">☎</i>633 268 222</span>
       <span><i class="insta-dot">◎</i>@tuhogarinstalaciones</span>
@@ -187,6 +191,7 @@ footer{padding:24px;text-align:center;background:#0e1712;color:#dce7df;font-size
   </div>
 </section>
 
+<section class="section" id="trabajos"><div class="wrap"><h2>Nuestros <span>trabajos</span></h2><p class="sub">Algunos de nuestros proyectos de instalaciones y reformas.</p><div class="gallery-filters" id="galleryFilters" aria-label="Filtrar trabajos"></div><div class="gallery-grid" id="galleryGrid"></div><p class="gallery-note" id="galleryStatus" aria-live="polite"></p></div></section>
 <section class="quote" id="presupuesto">
   <div class="quote-left">
     <h3>Cuéntanos tu proyecto</h3>
@@ -248,6 +253,57 @@ document.getElementById('quoteForm').addEventListener('submit', function(e){
   ].join('\n');
   window.open('https://wa.me/34633268222?text='+encodeURIComponent(msg),'_blank');
 });
+</script>
+
+<script>
+/* La galería busca automáticamente fotos JPG, JPEG, PNG o WEBP en la raíz pública de GitHub.
+   Para clasificarlas, nómbralas pergola-..., suelo-..., caseta-..., reforma-...,
+   jardin-..., piscina-..., cocina-..., toldo-... o trabajo-... (Otros).
+   Las 12 fotos originales conservan sus categorías definidas aquí. */
+(function(){
+ const repo='tuhogarmultiservicios/Tu-hogar-multiservicios';
+ const originals={
+  'trabajo-01.jpg':['Pérgola bioclimática en terraza','Pérgolas y toldos'],
+  'trabajo-02.jpg':['Pérgola de lamas orientables','Pérgolas y toldos'],
+  'trabajo-03.jpg':['Pérgola junto a piscina','Pérgolas y toldos'],
+  'trabajo-04.jpg':['Instalación de pérgola','Pérgolas y toldos'],
+  'trabajo-05.jpg':['Instalación de toldo','Pérgolas y toldos'],
+  'trabajo-06.jpg':['Suelo de acabado madera','Suelos y pavimentos'],
+  'trabajo-07.jpg':['Montaje de caseta de madera','Carpintería y casetas'],
+  'trabajo-08.jpg':['Caseta exterior','Carpintería y casetas'],
+  'trabajo-09.jpg':['Instalación de cocina','Reformas'],
+  'trabajo-10.jpg':['Reforma de baño','Reformas'],
+  'trabajo-11.jpg':['Trabajos de piscina','Jardines y exteriores'],
+  'trabajo-12.jpg':['Cubierta para patio','Pérgolas y toldos'],
+  'trabajo-13.jpg':['Montaje de estructura de pérgola','Pérgolas y toldos'],
+  'trabajo-14.jpg':['Instalación de estructura metálica','Pérgolas y toldos'],
+  'trabajo-15.jpg':['Estructura de pérgola en montaje','Pérgolas y toldos'],
+  'trabajo-16.jpg':['Montaje de caseta de madera','Carpintería y casetas'],
+  'trabajo-17.jpg':['Construcción de caseta de madera','Carpintería y casetas'],
+  'trabajo-18.jpg':['Pérgola bioclimática instalada','Pérgolas y toldos'],
+  'trabajo-19.jpg':['Preparación de pérgola bioclimática','Pérgolas y toldos'],
+  'trabajo-20.jpg':['Instalación de lamas de pérgola','Pérgolas y toldos'],
+  'trabajo-21.jpg':['Montaje de estructura exterior','Pérgolas y toldos'],
+  'trabajo-22.jpg':['Pérgola bioclimática en terraza','Pérgolas y toldos']
+ };
+ const categories=['Todos','Pérgolas y toldos','Reformas','Suelos y pavimentos','Jardines y exteriores','Carpintería y casetas','Otros'];
+ const rules=[[/^(pergola|p[eé]rgola|toldo|cubierta)-/i,'Pérgolas y toldos'],[/^(reforma|bano|baño|cocina|albanileria)-/i,'Reformas'],[/^(suelo|pavimento|alicatado)-/i,'Suelos y pavimentos'],[/^(jardin|jardín|piscina|exterior)-/i,'Jardines y exteriores'],[/^(caseta|carpinteria|madera)-/i,'Carpintería y casetas']];
+ const grid=document.getElementById('galleryGrid'),filters=document.getElementById('galleryFilters'),status=document.getElementById('galleryStatus');
+ let active='Todos'; let photos=[];
+ const readable=name=>name.replace(/\.[^.]+$/,'').replace(/[-_]+/g,' ').replace(/\w/g,c=>c.toUpperCase());
+ function makePhoto(name){const known=originals[name];return {name,title:known?known[0]:readable(name),category:known?known[1]:(rules.find(([re])=>re.test(name))||[null,'Otros'])[1]};}
+ function render(){
+  filters.replaceChildren();categories.forEach(cat=>{const b=document.createElement('button');b.type='button';b.className='gallery-filter';b.textContent=cat;b.setAttribute('aria-pressed',String(cat===active));b.onclick=()=>{active=cat;render()};filters.append(b)});
+  grid.replaceChildren();const shown=photos.filter(p=>active==='Todos'||p.category===active);
+  shown.forEach(p=>{const fig=document.createElement('figure');fig.className='gallery-card';const a=document.createElement('a');a.href=encodeURI(p.name);a.target='_blank';a.rel='noopener';a.setAttribute('aria-label','Ver foto: '+p.title);const img=document.createElement('img');img.src=encodeURI(p.name);img.alt=p.title;img.loading='lazy';const cap=document.createElement('figcaption');cap.textContent=p.title;a.append(img);fig.append(a,cap);grid.append(fig)});
+  status.textContent=shown.length?shown.length+' fotografía'+(shown.length===1?'':'s')+' en esta sección.':'Todavía no hay fotografías en esta categoría.';
+ }
+ photos=Object.keys(originals).map(makePhoto);render();
+ fetch('https://api.github.com/repos/'+repo+'/contents/?ref=main',{headers:{'Accept':'application/vnd.github+json'}})
+  .then(r=>{if(!r.ok)throw Error('GitHub API '+r.status);return r.json()})
+  .then(items=>{if(!Array.isArray(items))throw Error('Respuesta no válida');const names=items.filter(x=>x.type==='file'&&/\.(jpe?g|png|webp)$/i.test(x.name)&&(/^(trabajo|pergola|p[eé]rgola|toldo|cubierta|reforma|bano|baño|cocina|albanileria|suelo|pavimento|alicatado|jardin|jardín|piscina|exterior|caseta|carpinteria|madera)-/i.test(x.name))).map(x=>x.name);photos=[...new Set([...Object.keys(originals),...names])].map(makePhoto);render()})
+  .catch(()=>{status.textContent='Se muestran las fotos originales. Las nuevas fotos pueden tardar en aparecer si GitHub no responde.'});
+})();
 </script>
 </body>
 </html>
